@@ -5,6 +5,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
 import Gallery from "@/components/Gallery/page";
+import CallToAction from "@/components/CallToAction/page";
 
 const menuItems = [
   {
@@ -103,6 +104,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <CallToAction />
       <Gallery />
     </div>
   );
