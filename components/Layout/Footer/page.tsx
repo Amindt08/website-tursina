@@ -23,18 +23,18 @@ const Footer = () => {
                 <div>
                     <h2 className="text-2xl font-semibold mb-4">Alamat</h2>
                     <div className="space-y-3 text-sm">
-                        <div className="flex items-start gap-3 justify-center md:justify-start">
+                        <div className="flex items-start gap-3 justify-start">
                             <i className="ri-map-pin-2-fill text-xl"></i>
-                            <p>
+                            <p className="text-left">
                                 Jl. Mayjend Sungkono No 23, Nambangan Lor, Kec. Manguharjo,
                                 Kota Madiun, Jawa Timur 63129
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center md:justify-start">
+                        <div className="flex items-center gap-3 justify-start">
                             <i className="ri-whatsapp-fill text-xl"></i>
                             <p>(62) 823-3799-5558</p>
                         </div>
-                        <div className="flex items-center gap-3 justify-center md:justify-start">
+                        <div className="flex items-center gap-3 justify-start">
                             <i className="ri-mail-fill text-xl"></i>
                             <p>marketingtursinakebab@gmail.com</p>
                         </div>
@@ -65,7 +65,7 @@ const Footer = () => {
             </div>
 
             {/* Copyright */}
-            <div className="bg-orange-400 py-4 mt-6">
+            <div className="bg-amber-800 py-4 mt-6">
                 <p className="text-center text-sm opacity-90">
                     © 2025 Tursina Kebab | Powered by{" "}
                     <a
