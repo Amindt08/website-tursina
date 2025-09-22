@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
+import Gallery from "@/components/Gallery/page";
 
 const menuItems = [
   {
@@ -44,22 +45,22 @@ export default function Home() {
           // pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}
           loop
-          className="w-full h-[700px] pt-10 mt-16 rounded-lg shadow-lg"
+          className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[700px] pt-10 mt-20"
         >
           <SwiperSlide>
             <Image
-              src="/images/banner1.jpg"
+              src="/images/promo/banner1.jpg"
               alt="Banner 1"
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover"
               width={800}
               height={400}
             />
           </SwiperSlide>
           <SwiperSlide>
             <Image
-              src="/images/banner1.jpg"
+              src="/images/promo/banner2.jpg"
               alt="Banner 1"
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover"
               width={800}
               height={400}
             />
@@ -67,8 +68,9 @@ export default function Home() {
         </Swiper>
       </section>
       <section id="menu-fav" className="py-10">
-        <h1 className="text-4xl font-bold text-center">Menu Unggulan Tursina</h1>
-        <p className="text-center text-gray-600 mt-2 mb-10">
+        <h2 className="text-3xl lg:text-5xl font-semibold  text-black text-center">Menu Unggulan Tursina</h2>
+        <div className="w-32 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
+        <p className="text-center text-primary md:text-lg font-normal mt-2 md:mt-4 mb-6 md:mb-10">
           Nikmati hidangan terbaik kami yang dibuat dengan cinta dan bahan segar.
         </p>
 
@@ -101,25 +103,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <section className="mt-6 py-10 bg-orange-100">
-        <h1 className="text-4xl font-bold text-center text-orange-600">Galeri Tursina</h1>
-        <div className="mx-auto px-4 columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 pt-10">
-          {galleryItems.map((item) => (
-            <div
-              key={item.id}
-              className="break-inside-avoid overflow-hidden rounded-xl shadow-md"
-            >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+      <Gallery />
     </div>
   );
 }
