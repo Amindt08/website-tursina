@@ -12,7 +12,7 @@ const Logo: React.FC = () => {
                 height={50}
                 style={{ width: "auto", height: "auto" }}
                 quality={100}
-                className='ml-16'
+                className='md:ml-16'
             />
         </Link>
     )
