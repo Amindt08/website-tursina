@@ -6,34 +6,29 @@ import Image from "next/image";
 import Link from "next/link";
 import Gallery from "@/components/Gallery/page";
 import CallToAction from "@/components/CallToAction/page";
+import MenuCard from "@/components/Menu/MenuCard";
 
 const menuItems = [
   {
-    name: "Kebab Original Big",
+    title: "Kebab Original Big",
     price: "Rp17.000",
-    image: "/images/menu/menu1.jpg",
+    image: "/images/menu/1.jpg",
   },
   {
-    name: "Cheese Kebab",
+    title: "Cheese Kebab",
     price: "Rp27.000",
-    image: "/images/menu/menu2.jpg",
+    image: "/images/menu/2.jpg",
   },
   {
-    name: "Black Beef Kebab",
+    title: "Black Beef Kebab",
     price: "Rp30.000",
-    image: "/images/menu/menu3.jpg",
+    image: "/images/menu/3.jpg",
   },
   {
-    name: "Spicy Kebab",
+    title: "Spicy Kebab",
     price: "Rp35.000",
-    image: "/images/menu/menu4.jpg",
+    image: "/images/menu/4.jpg",
   },
-];
-
-const galleryItems = [
-  { id: 1, src: "/images/galeri/gallery1.jpg", alt: "Gallery 1" },
-  { id: 2, src: "/images/galeri/gallery2.jpg", alt: "Gallery 2" },
-  { id: 3, src: "/images/galeri/gallery1.jpg", alt: "Gallery 5" },
 ];
 
 export default function Home() {
@@ -76,24 +71,14 @@ export default function Home() {
         </p>
 
         {/* Grid Card */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 ">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 ">
           {menuItems.map((item, index) => (
-            <div
+            <MenuCard
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300 pt-4 px-3"
-            >
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={300}
-                height={200}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="font-semibold text-xl">{item.name}</h2>
-                <p className="text-orange-600 font-semibold mt-2 text-end"><i className="ri-price-tag-3-line"></i> {item.price}</p>
-              </div>
-            </div>
+              title={item.title}
+              price={item.price}
+              image={item.image}
+            />
           ))}
         </div>
         <div className="text-center mt-10">
@@ -104,7 +89,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
       <CallToAction />
       <Gallery />
     </div>
