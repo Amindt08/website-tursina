@@ -11,22 +11,22 @@ import MenuCard from "@/components/Menu/MenuCard";
 const menuItems = [
   {
     title: "Kebab Original Big",
-    price: "Rp17.000",
+    price: 17000,
     image: "/images/menu/1.jpg",
   },
   {
     title: "Cheese Kebab",
-    price: "Rp27.000",
+    price: 27000,
     image: "/images/menu/2.jpg",
   },
   {
     title: "Black Beef Kebab",
-    price: "Rp30.000",
+    price: 30000,
     image: "/images/menu/3.jpg",
   },
   {
     title: "Spicy Kebab",
-    price: "Rp35.000",
+    price: 35000,
     image: "/images/menu/4.jpg",
   },
 ];
@@ -66,25 +66,26 @@ export default function Home() {
       <section id="menu-fav" className="py-10">
         <h2 className="text-3xl lg:text-5xl font-semibold  text-black text-center">Menu Unggulan Tursina</h2>
         <div className="w-32 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
-        <p className="text-center text-primary md:text-lg font-normal mt-2 md:mt-4 mb-6 md:mb-10">
+        <p className="text-center text-black md:text-lg font-normal mt-2 md:mt-4 mb-6 md:mb-10">
           Nikmati hidangan terbaik kami yang dibuat dengan cinta dan bahan segar.
         </p>
 
         {/* Grid Card */}
-        <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 ">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 ">
           {menuItems.map((item, index) => (
             <MenuCard
               key={index}
               title={item.title}
               price={item.price}
               image={item.image}
+              showButton={false}
             />
           ))}
         </div>
         <div className="text-center mt-10">
           <Link href="/menu">
             <button className="bg-orange-500 text-white font-semibold py-4 px-6 rounded-full shadow-md hover:bg-transparent hover:border border-orange-600 hover:text-orange-600 transition">
-              Lihat Semua Menu
+              Telusuri Semua Menu <i className="ri-arrow-right-s-line"></i>
             </button>
           </Link>
         </div>
