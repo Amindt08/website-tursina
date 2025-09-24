@@ -1,6 +1,5 @@
 "use client"
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react'
 import Masonry from 'react-masonry-css';
 
@@ -36,7 +35,7 @@ const Gallery = () => {
             <div className='container  mx-auto lg:max-w-screen-xl md:max-w-screen-md' id='gallery-section'>
                 <div className="text-center">
                     <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase'>Our Gallery</p>
-                    <h2 className="text-3xl lg:text-5xl font-semibold text-black dark:text-white">
+                    <h2 className="text-3xl lg:text-5xl font-semibold text-black">
                         Gallery of our cooked food.
                     </h2>
                     <div className="w-32 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
