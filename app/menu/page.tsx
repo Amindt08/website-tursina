@@ -68,6 +68,7 @@ const Menu = () => {
                                         image: item.image,
                                     })
                                 }
+                                description={item.description}
                             />
                         ))}
                     </div>

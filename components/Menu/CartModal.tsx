@@ -63,7 +63,7 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
                     onClick={onClose}
                     className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl font-bold"
                 >
-                    <i className="ri-close-circle-line text-2xl"></i>
+                    <i className="ri-close-large-fill"></i>
                 </button>
 
                 <h1 className="text-2xl font-bold text-center text-orange-600 mb-6">
