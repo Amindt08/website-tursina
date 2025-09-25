@@ -13,11 +13,13 @@ const menuItems = [
     title: "Kebab Original Big",
     price: 17000,
     image: "/images/menu/1.jpg",
+    description: "Kebab besar dengan daging sapi pilihan dan sayuran segar."
   },
   {
     title: "Cheese Kebab",
     price: 27000,
     image: "/images/menu/2.jpg",
+    description: "Kebab lezat dengan tambahan keju meleleh."
   },
   {
     title: "Black Beef Kebab",
@@ -79,6 +81,7 @@ export default function Home() {
               price={item.price}
               image={item.image}
               showButton={false}
+              description={item.description}
             />
           ))}
         </div>

@@ -3,7 +3,8 @@ export const menuItems = [
         title: "Kebab Original Mini",
         price: 17000,
         image: "/images/menu/9.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: "Kebab ukuran kecil cocok untuk camilan ringan."
     },
     {
         title: "Kebab Original Normal",
@@ -15,7 +16,8 @@ export const menuItems = [
         title: "Kebab Original Big",
         price: 17000,
         image: "/images/menu/1.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: "Kebab besar dengan daging sapi pilihan dan sayuran segar."
     },
     {
         title: "Kebab Telur",
@@ -45,7 +47,8 @@ export const menuItems = [
         title: "Cheese Kebab",
         price: 27000,
         image: "/images/menu/2.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: "Kebab lezat dengan tambahan keju meleleh."
     },
     {
         title: "Beef Full Kebab",
