@@ -7,7 +7,7 @@ export const headerData: HeaderItem[] = [
     { label: "Membership", href: "/membership" },
     {
         label: "About Tursina",
-        href: "/#",
+        href: "/about/profil_usaha",
         submenu: [
             { label: "Profil Usaha", href: "/about/profil_usaha" },
             { label: "Lokasi Outlet", href: "/about/lokasi_outlet" },
