@@ -47,14 +47,14 @@ export default function MenuCard({
                         {showButton && onAdd && (
                             <button
                                 onClick={onAdd}
-                                className="flex-1 py-2 border-2 border-orange-600 text-orange-600 rounded-full font-medium hover:bg-orange-600 hover:text-white transition flex items-center justify-center gap-1"
+                                className="flex-1 py-2 border-2 border-orange-600 text-orange-600 text-sm lg:text-md rounded-full  hover:bg-orange-600 hover:text-white transition flex items-center justify-center gap-1"
                             >
                                 <i className="ri-shopping-cart-2-line"></i> Tambah
                             </button>
                         )}
                         <button
                             onClick={handleDetail}
-                            className="flex-1 py-2 bg-orange-600 text-white rounded-full font-medium hover:bg-white hover:border-2 border-orange-600 hover:text-orange-600 transition flex items-center justify-center gap-1"
+                            className="flex-1 py-2 bg-orange-600 text-white text-sm lg:text-md rounded-full hover:bg-white hover:border-2 border-orange-600 hover:text-orange-600 transition flex items-center justify-center gap-1"
                         >
                             <i className="ri-eye-fill"></i> Detail
                         </button>

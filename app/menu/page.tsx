@@ -37,7 +37,6 @@ const Menu = () => {
 
     return (
         <section className="bg-slate-100 min-h-screen">
-            {/* Header */}
             <div className="bg-orange-500 text-white text-center py-20 pt-32">
                 <h1 className="text-3xl lg:text-5xl font-semibold">Menu Tursina</h1>
                 <p className="mt-4 text-lg lg:text-xl">
@@ -45,13 +44,11 @@ const Menu = () => {
                 </p>
             </div>
 
-            {/* Filter Navigasi */}
             <MenuNav
                 activeCategory={activeCategory}
                 setActiveCategory={setActiveCategory}
             />
 
-            {/* List Menu */}
             <div className="p-6">
                 {filteredMenu.length > 0 ? (
                     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
