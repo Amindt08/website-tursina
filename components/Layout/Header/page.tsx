@@ -84,39 +84,38 @@ const Header: React.FC = () => {
                     </div>
                 </div>
                 {navbarOpen && (
-                    <div className="fixed top-0 left-0 w-full h-full bg-orange-500 bg-opacity-50 z-40" />
-                )}
-                <div
-                    ref={mobileMenuRef}
-                    className={`lg:hidden fixed top-0 right-0 h-full w-full bg-darkmode shadow-lg transform transition-transform duration-300 max-w-xs ${navbarOpen ? "translate-x-0" : "translate-x-full"
-                        } z-50`}
-                >
-                    <div className="flex items-center justify-between p-4">
-                        <button
+                    <>
+                        {/* Backdrop */}
+                        <div
+                            className="fixed inset-0 z-40"
                             onClick={() => setNavbarOpen(false)}
-                            className="mt-6 w-full bg-amber-800 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition"
+                            aria-hidden="true"
+                        />
+
+                        {/* Mobile Menu */}
+                        <div
+                            ref={mobileMenuRef}
+                            className="lg:hidden fixed top-0 right-0 h-full w-full max-w-xs z-50 shadow-lg transform transition-transform duration-300 translate-x-0 bg-orange-500"
+                            role="dialog"
+                            aria-modal="true"
                         >
-                            Tutup Menu
-                        </button>
-                    </div>
-                    <nav className="flex flex-col items-start p-4 text-white">
-                        {headerData.map((item, index) => (
-                            <MobileHeaderLink key={index} item={item} />
-                        ))}
-                    </nav>
-                    {/* <div className="mt-4 flex flex-col space-y-4 w-full">
-                        <Link
-                            href="#"
-                            className="bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white"
-                            onClick={() => {
-                                setIsSignInOpen(true);
-                                setNavbarOpen(false);
-                            }}
-                        >
-                            Sign In
-                        </Link>
-                    </div> */}
-                </div>
+                            <div className="flex justify-end p-4">
+                                <button
+                                    onClick={() => setNavbarOpen(false)}
+                                    className="bg-orange-600 hover:bg-orange-700 text-white font-medium py-2 px-4 rounded-lg transition"
+                                >
+                                    <i className="ri-close-large-line"></i>
+                                </button>
+                            </div>
+
+                            <nav className="flex flex-col items-start p-4 text-white space-y-3">
+                                {headerData.map((item, index) => (
+                                    <MobileHeaderLink key={index} item={item} />
+                                ))}
+                            </nav>
+                        </div>
+                    </>
+                )}
             </div>
         </header>
     )
