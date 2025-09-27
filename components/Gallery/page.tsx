@@ -46,7 +46,6 @@ const Gallery = () => {
                         className="flex gap-6"
                         columnClassName="masonry-column"
                     >
-                        {/* Map through images */}
                         {galleryImages.map((item, index) => (
                             <div key={index} className="overflow-hidden rounded-3xl mb-6 relative group">
                                 <Image
@@ -57,16 +56,7 @@ const Gallery = () => {
                                     className="object-cover w-full h-full"
                                 />
                                 <div className="w-full h-full absolute bg-black/40 top-full group-hover:top-0 duration-500 p-12 flex flex-col items-start gap-8 justify-end">
-                                    {/* <p className='text-white text-2xl'>
-                                        <span className='font-semibold'>Name:</span> {item.name}
-                                    </p> */}
                                     <div className="flex items-center justify-between w-full">
-                                        {/* <p className='text-white text-2xl'>
-                                            <span className='font-semibold'>Price:</span> ${item.price}
-                                        </p> */}
-                                        {/* <Link href="#" className='text-white rounded-full bg-primary border border-primary py-2 px-6 hover:bg-primary/40 hover:backdrop-blur-sm'>
-                                            Learn More
-                                        </Link> */}
                                     </div>
                                 </div>
                             </div>
