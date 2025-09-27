@@ -15,13 +15,13 @@ const Footer = () => {
                         className="w-20 h-auto mb-3"
                         priority
                     />
-                    <h1 className="text-3xl font-bold">Tursina Kebab</h1>
-                    <p className="text-md mt-1">Kebab & Kuliner Lezat</p>
+                    <h1 className="text-xl md:text-3xl font-bold">Tursina Kebab</h1>
+                    <p className="text-sm md:text-md mt-1">Kebab & Kuliner Lezat</p>
                 </div>
 
                 {/* Alamat */}
                 <div>
-                    <h2 className="text-2xl font-semibold mb-4">Alamat</h2>
+                    <h2 className="text-xl md:text-2xl font-semibold mb-4">Alamat</h2>
                     <div className="space-y-3 text-sm">
                         <div className="flex items-start gap-3 justify-start">
                             <i className="ri-map-pin-2-fill text-xl"></i>
@@ -43,7 +43,7 @@ const Footer = () => {
 
                 {/* Sosial Media */}
                 <div className="md:ml-10">
-                    <h2 className="text-2xl font-semibold mb-4">Ikuti Kami</h2>
+                    <h2 className="text-xl md:text-2xl font-semibold mb-4">Ikuti Kami</h2>
                     <div className="flex gap-4 justify-center md:justify-start">
                         {[
                             { icon: "ri-instagram-fill", link: "#" },
@@ -67,15 +67,7 @@ const Footer = () => {
             {/* Copyright */}
             <div className="bg-amber-800 py-4 mt-6">
                 <p className="text-center text-sm opacity-90">
-                    © 2025 Tursina Kebab | Powered by{" "}
-                    <a
-                        href="https://lokalaris.com"
-                        className="underline hover:text-white transition"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        lokalaris.com
-                    </a>
+                    © 2025 Tursina Kebab | Powered by IT Tursina Kebab
                 </p>
             </div>
         </footer>
