@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import Logo from './Logo/page';
 import { headerData } from './Navigation/menuData';
 import HeaderLink from './Navigation/HeaderLink';
-import Link from 'next/link';
 import MobileHeaderLink from './Navigation/MobileHeaderLink';
 
 const Header: React.FC = () => {
@@ -110,9 +110,14 @@ const Header: React.FC = () => {
 
                             <nav className="flex flex-col items-start p-4 text-white space-y-3">
                                 {headerData.map((item, index) => (
-                                    <MobileHeaderLink key={index} item={item} />
+                                    <MobileHeaderLink
+                                        key={index}
+                                        item={item}
+                                        setNavbarOpen={setNavbarOpen} // 👉 kirim props
+                                    />
                                 ))}
                             </nav>
+
                         </div>
                     </>
                 )}

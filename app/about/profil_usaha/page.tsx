@@ -19,7 +19,7 @@ const ProfilUsahaPage = () => {
             {/* Header */}
             <header className="bg-orange-500 text-white py-20 pt-32">
                 <div className="max-w-5xl mx-auto text-center">
-                    <h1 className="text-5xl font-semibold">Profil Usaha - Tursina Kebab</h1>
+                    <h1 className="text-3xl md:text-5xl font-semibold">Profil Usaha - Tursina Kebab</h1>
                 </div>
             </header>
 

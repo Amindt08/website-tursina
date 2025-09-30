@@ -2,10 +2,16 @@ import { useState } from "react";
 import Link from "next/link";
 import { HeaderItem } from "../../../../types/menu";
 
-const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
+interface MobileHeaderLinkProps {
+  item: HeaderItem;
+  setNavbarOpen: (open: boolean) => void; // ✅ tambahan props
+}
+
+const MobileHeaderLink: React.FC<MobileHeaderLinkProps> = ({ item, setNavbarOpen }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
 
-  const handleToggle = () => {
+  const handleToggle = (e: React.MouseEvent) => {
+    e.preventDefault(); // ⛔ supaya parent link tidak langsung redirect
     setSubmenuOpen(!submenuOpen);
   };
 
@@ -13,7 +19,11 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
     <div className="relative w-full">
       <Link
         href={item.href}
-        onClick={item.submenu ? handleToggle : undefined}
+        onClick={
+          item.submenu
+            ? handleToggle // ✅ parent dengan submenu → toggle dropdown
+            : () => setNavbarOpen(false) // ✅ parent tanpa submenu → tutup menu
+        }
         className="flex items-center justify-between w-full px-2 py-2 text-muted focus:outline-none hover:text-amber-800 hover:bg-gray-100"
       >
         {item.label}
@@ -35,12 +45,14 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
           </svg>
         )}
       </Link>
+
       {submenuOpen && item.submenu && (
         <div className="p-2 w-full">
           {item.submenu.map((subItem, index) => (
             <Link
               key={index}
               href={subItem.href}
+              onClick={() => setNavbarOpen(false)} // ✅ submenu diklik → auto close menu
               className="block py-2 px-4 text-white hover:text-amber-800 hover:bg-gray-100"
             >
               {subItem.label}

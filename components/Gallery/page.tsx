@@ -6,22 +6,22 @@ import Masonry from 'react-masonry-css';
 
 const galleryImages = [
     {
-        src: '/images/gallery/1.jpg',
+        src: '/images/gallery/1.JPG',
         name: 'Grilled Kebab',
         price: 12.99,
     },
     {
-        src: '/images/gallery/3.jpg',
+        src: '/images/gallery/3.JPG',
         name: 'Chicken Shawarma',
         price: 10.99,
     },
     {
-        src: '/images/gallery/6.jpg',
+        src: '/images/gallery/6.JPG',
         name: 'Falafel Plate',
         price: 8.99,
     },
     {
-        src: '/images/gallery/2.jpg',
+        src: '/images/gallery/2.JPG',
         name: 'Falafel Plate',
         price: 8.99,
     },

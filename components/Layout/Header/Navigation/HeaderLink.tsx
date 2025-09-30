@@ -24,11 +24,10 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
     >
       <Link
         href={item.href}
-        className={`text-lg flex items-center hover:text-orange-600 capitalize relative ${
-          isActive
+        className={`text-lg flex items-center hover:text-orange-600 capitalize relative ${isActive
             ? "text-orange-600 after:absolute after:w-8 after:h-1 after:bg-primary after:rounded-full after:-bottom-1 font-semibold"
             : "text-gray-900"
-        }`}
+          }`}
       >
         {item.label}
         {item.submenu && (
@@ -63,11 +62,11 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
               <Link
                 key={index}
                 href={subItem.href}
-                className={`block px-4 py-2 rounded-md ${
-                  isSubItemActive
+                onClick={() => setSubmenuOpen(false)} 
+                className={`block px-4 py-2 rounded-md ${isSubItemActive
                     ? "bg-primary text-gray-900"
                     : "text-gray-900 hover:bg-primary hover:text-orange-600"
-                }`}
+                  }`}
               >
                 {subItem.label}
               </Link>
