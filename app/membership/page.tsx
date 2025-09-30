@@ -35,7 +35,7 @@ export default function MembershipPage() {
 
             if (!res.ok) throw new Error("Gagal menyimpan data");
 
-            setSuccess("Pendaftaran membership berhasil!");
+            setSuccess("🎉 Pendaftaran membership berhasil!");
             setForm({
                 name: "",
                 email: "",
@@ -67,59 +67,57 @@ export default function MembershipPage() {
         "Outlet Ponorogo, Kabupaten Ponorogo"
     ];
 
-
     return (
-        <section className="bg-orange-200 min-h-screen mt-20 pt-20">
-            <div className="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg">
-                <h1 className="text-2xl font-bold text-center text-orange-600 mb-6">
+        <section className="bg-gradient-to-b from-orange-100 to-orange-200 min-h-screen flex items-center justify-center py-16 px-4">
+            <div className="w-full max-w-lg bg-white p-8 rounded-2xl shadow-xl pt-10 mt-10">
+                <h1 className="text-3xl font-bold text-center text-orange-600">
                     Form Membership
                 </h1>
+                <p className="text-center text-gray-500 mt-2 mb-8">
+                    Daftar sekarang dan nikmati berbagai keuntungan dari membership kami.
+                </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                        <label className="block mb-1 font-medium">Nama Lengkap</label>
+                        <label className="block mb-1 font-medium text-gray-700">
+                            Nama Lengkap
+                        </label>
                         <input
                             type="text"
                             name="name"
                             value={form.name}
                             onChange={handleChange}
                             required
-                            className="w-full border p-2 rounded-lg"
+                            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition"
                             placeholder="Masukkan nama anda"
                         />
                     </div>
-                    {/* <div>
-                        <label className="block mb-1 font-medium">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full border p-2 rounded-lg"
-                            placeholder="Masukkan email anda"
-                        />
-                    </div> */}
+
                     <div>
-                        <label className="block mb-1 font-medium">Nomor HP</label>
+                        <label className="block mb-1 font-medium text-gray-700">
+                            Nomor HP
+                        </label>
                         <input
                             type="tel"
                             name="phone"
                             value={form.phone}
                             onChange={handleChange}
                             required
-                            className="w-full border p-2 rounded-lg"
+                            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition"
                             placeholder="08xxxxxxxxxx"
                         />
                     </div>
+
                     <div>
-                        <label className="block mb-1 font-medium">Lokasi Outlet</label>
+                        <label className="block mb-1 font-medium text-gray-700">
+                            Lokasi Outlet
+                        </label>
                         <select
                             name="address"
                             value={form.address}
                             onChange={handleChange}
                             required
-                            className="w-full border p-2 rounded-lg"
+                            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition"
                         >
                             <option value="">-- Pilih Lokasi Outlet --</option>
                             {outlets.map((outlet, idx) => (
@@ -129,28 +127,26 @@ export default function MembershipPage() {
                             ))}
                         </select>
                     </div>
-                    {/* <div>
-                        <label className="block mb-1 font-medium">Catatan</label>
-                        <textarea
-                            name="note"
-                            value={form.note}
-                            onChange={handleChange}
-                            rows={3}
-                            className="w-full border p-2 rounded-lg"
-                            placeholder="Catatan tambahan"
-                        />
-                    </div> */}
+
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-700 transition"
+                        className="w-full bg-orange-600 text-white py-3 rounded-lg font-semibold hover:bg-orange-700 focus:ring-2 focus:ring-orange-500 transition disabled:opacity-60"
                     >
                         {loading ? "Menyimpan..." : "Daftar Membership"}
                     </button>
                 </form>
 
-                {success && <p className="mt-4 text-green-600">{success}</p>}
-                {error && <p className="mt-4 text-red-600">{error}</p>}
+                {success && (
+                    <div className="mt-6 p-3 rounded-lg bg-green-100 text-green-700 text-center font-medium">
+                        {success}
+                    </div>
+                )}
+                {error && (
+                    <div className="mt-6 p-3 rounded-lg bg-red-100 text-red-700 text-center font-medium">
+                        {error}
+                    </div>
+                )}
             </div>
         </section>
     );
