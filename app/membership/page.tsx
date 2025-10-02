@@ -95,7 +95,7 @@ export default function MembershipPage() {
 
                     <div>
                         <label className="block mb-1 font-medium text-gray-700">
-                            Nomor HP
+                            Nomor WhatsApp Aktif
                         </label>
                         <input
                             type="tel"
