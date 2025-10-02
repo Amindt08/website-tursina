@@ -16,7 +16,7 @@ const Footer = () => {
                         priority
                     />
                     <h1 className="text-xl md:text-3xl font-bold">Tursina Kebab</h1>
-                    <p className="text-sm md:text-md mt-1">Kebab & Kuliner Lezat</p>
+                    <p className="text-sm md:text-md mt-1">Kebab Keluarga Modern</p>
                 </div>
 
                 {/* Alamat */}

@@ -12,22 +12,27 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   useEffect(() => {
     const isLinkActive =
       path === item.href ||
-      (item.submenu?.some(subItem => path === subItem.href) ?? false);
+      (item.submenu?.some((subItem) => path === subItem.href) ?? false);
     setIsActive(isLinkActive);
   }, [path, item.href, item.submenu]);
 
+  const toggleSubmenu = (e: React.MouseEvent) => {
+    if (item.submenu) {
+      e.preventDefault(); // supaya tidak langsung redirect
+      setSubmenuOpen((prev) => !prev);
+    }
+  };
+
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => item.submenu && setSubmenuOpen(true)}
-      onMouseLeave={() => setSubmenuOpen(false)}
-    >
+    <div className="relative">
       <Link
         href={item.href}
-        className={`text-lg flex items-center hover:text-orange-600 capitalize relative ${isActive
+        onClick={toggleSubmenu}
+        className={`text-lg flex items-center hover:text-orange-600 capitalize relative ${
+          isActive
             ? "text-orange-600 after:absolute after:w-8 after:h-1 after:bg-primary after:rounded-full after:-bottom-1 font-semibold"
             : "text-gray-900"
-          }`}
+        }`}
       >
         {item.label}
         {item.submenu && (
@@ -36,7 +41,9 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
             width="1.5em"
             height="1.5em"
             viewBox="0 0 24 24"
-            className="ml-1"
+            className={`ml-1 transition-transform ${
+              submenuOpen ? "rotate-180" : ""
+            }`}
           >
             <path
               fill="none"
@@ -62,11 +69,12 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
               <Link
                 key={index}
                 href={subItem.href}
-                onClick={() => setSubmenuOpen(false)} 
-                className={`block px-4 py-2 rounded-md ${isSubItemActive
+                onClick={() => setSubmenuOpen(false)} // submenu nutup setelah klik
+                className={`block px-4 py-2 rounded-md ${
+                  isSubItemActive
                     ? "bg-primary text-gray-900"
                     : "text-gray-900 hover:bg-primary hover:text-orange-600"
-                  }`}
+                }`}
               >
                 {subItem.label}
               </Link>
