@@ -1,16 +1,17 @@
 export const menuItems = [
-    {
-        title: "Kebab Original Mini",
-        price: 17000,
-        image: "/images/menu/9.jpg",
-        category: "Kebab",
-        description: "Kebab ukuran kecil cocok untuk camilan ringan."
-    },
+    // {
+    //     title: "Kebab Original Mini",
+    //     price: 17000,
+    //     image: "/images/menu/9.jpg",
+    //     category: "Kebab",
+    //     description: "Kebab ukuran kecil cocok untuk camilan ringan."
+    // },
     {
         title: "Kebab Original Normal",
-        price: 17000,
+        price: 14000,
         image: "/images/menu/10.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Kebab Original Big",
@@ -21,99 +22,114 @@ export const menuItems = [
     },
     {
         title: "Kebab Telur",
-        price: 25000,
+        price: 21000,
         image: "/images/menu/7.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Kebab Sosis",
-        price: 30000,
+        price: 22000,
         image: "/images/menu/8.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Spicy Kebab",
-        price: 35000,
+        price: 20000,
         image: "/images/menu/4.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Black Kebab",
-        price: 20000,
+        price: 18000,
         image: "/images/menu/6.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Cheese Kebab",
-        price: 27000,
+        price: 22000,
         image: "/images/menu/2.jpg",
         category: "Kebab",
         description: "Kebab lezat dengan tambahan keju meleleh."
     },
     {
         title: "Beef Full Kebab",
-        price: 15000,
+        price: 18000,
         image: "/images/menu/5.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Black Beef Full Kebab",
-        price: 30000,
+        price: 20000,
         image: "/images/menu/3.jpg",
-        category: "Kebab"
+        category: "Kebab",
+        description: ""
     },
     {
         title: "Beef Burger",
-        price: 30000,
+        price: 16000,
         image: "/images/menu/11.jpg",
-        category: "Burger"
+        category: "Burger",
+        description: ""
     },
     {
         title: "Black Burger",
-        price: 30000,
+        price: 18000,
         image: "/images/menu/12.jpg",
-        category: "Burger"
+        category: "Burger",
+        description: ""
     },
     {
         title: "Cheese Burger",
-        price: 30000,
+        price: 20000,
         image: "/images/menu/14.jpg",
-        category: "Burger"
+        category: "Burger",
+        description: ""
     },
     {
         title: "Black Cheese Burger",
-        price: 30000,
+        price: 23000,
         image: "/images/menu/13.jpg",
-        category: "Burger"
+        category: "Burger",
+        description: ""
     },
     {
         title: "Maryam Original",
         price: 30000,
         image: "/images/menu/15.jpg",
-        category: "Maryam"
+        category: "Maryam",
+        description: ""
     },
     {
         title: "Maryam Coklat",
         price: 30000,
         image: "/images/menu/16.jpg",
-        category: "Maryam"
+        category: "Maryam",
+        description: ""
     },
     {
         title: "Maryam Coklat Keju",
         price: 30000,
         image: "/images/menu/17.jpg",
-        category: "Maryam"
+        category: "Maryam",
+        description: ""
     },
     {
         title: "Teh Pucuk",
         price: 30000,
         image: "/images/menu/18.jpg",
-        category: "Minuman"
+        category: "Minuman",
+        description: ""
     },
     {
         title: "Teh Tarik",
         price: 30000,
         image: "/images/menu/19.jpg",
-        category: "Minuman"
+        category: "Minuman",
+        description: ""
     },
 ];

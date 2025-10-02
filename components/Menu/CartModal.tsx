@@ -19,7 +19,16 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
         name: "",
         phone: "",
         note: "",
+        delivery: "pickup", // default Ambil di Tempat
+        address: "",
+        branch: "", // cabang
     });
+
+    const branches = [
+        "Cabang Kota Madiun",
+        "Cabang Caruban",
+        "Cabang Ponorogo",
+    ];
 
     if (!isOpen) return null;
 
@@ -29,7 +38,7 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
     const total = cart.reduce((acc, i) => acc + i.price * i.qty, 0);
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
@@ -42,23 +51,27 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
 
         const message = `Halo, saya ingin pesan:
 
-        Nama: ${form.name}
-        Nomor HP: ${form.phone}
-        Pesanan:
-        ${menuList}
-        Catatan: ${form.note}
+Nama: ${form.name}
+Nomor HP: ${form.phone}
+Metode Pengiriman: ${form.delivery === "pickup" ? "Ambil di Tempat" : "Antar ke Alamat"}
+${form.delivery === "pickup" ? `Cabang: ${form.branch}` : ""}
+${form.delivery === "delivery" ? `Alamat: ${form.address}` : ""}
+Pesanan:
+${menuList}
+Catatan: ${form.note}
 
-        Total: ${formatRupiah(total)}
+Total: ${formatRupiah(total)}
         `;
 
-        const waLink = `https://wa.me/6282337995558?text=${encodeURIComponent(message)}`;
+        const waLink = `https://wa.me/6282337995558?text=${encodeURIComponent(
+            message
+        )}`;
         window.open(waLink, "_blank");
     };
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-white w-full max-w-lg p-6 rounded-2xl shadow-lg overflow-y-auto max-h-[90vh] relative">
-
                 <button
                     onClick={onClose}
                     className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl font-bold"
@@ -97,13 +110,14 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
                         />
                     </div>
 
+
                     {cart.length === 0 ? (
                         <p className="text-gray-500 text-center mb-6">
                             Belum ada pesanan
                         </p>
                     ) : (
                         <>
-                            <div className="space-y-3 mb-4 ">
+                            <div className="space-y-3 mb-4">
                                 {cart.map((item, idx) => (
                                     <div
                                         key={idx}
@@ -127,6 +141,70 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
                                 <span>{formatRupiah(total)}</span>
                             </div>
                         </>
+                    )}
+
+                    {/* Opsi Metode Pengiriman */}
+                    <div>
+                        <label className="block mb-1 font-bold">Metode Pengiriman</label>
+                        <div className="flex gap-4">
+                            <label className="flex items-center gap-2">
+                                <input
+                                    type="radio"
+                                    name="delivery"
+                                    value="pickup"
+                                    checked={form.delivery === "pickup"}
+                                    onChange={handleChange}
+                                />
+                                Ambil di Tempat
+                            </label>
+                            <label className="flex items-center gap-2">
+                                <input
+                                    type="radio"
+                                    name="delivery"
+                                    value="delivery"
+                                    checked={form.delivery === "delivery"}
+                                    onChange={handleChange}
+                                />
+                                Antar ke Alamat
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* Jika pilih Antar ke Alamat */}
+                    {form.delivery === "delivery" && (
+                        <div>
+                            <label className="block mb-1 font-bold">Alamat Lengkap</label>
+                            <textarea
+                                name="address"
+                                value={form.address}
+                                onChange={handleChange}
+                                rows={2}
+                                required={form.delivery === "delivery"}
+                                className="w-full border p-2 rounded-lg"
+                                placeholder="Masukkan alamat lengkap untuk pengantaran"
+                            />
+                        </div>
+                    )}
+
+                    {/* Jika pilih Ambil di Tempat */}
+                    {form.delivery === "pickup" && (
+                        <div>
+                            <label className="block mb-1 font-bold">Pilih Cabang</label>
+                            <select
+                                name="branch"
+                                value={form.branch}
+                                onChange={handleChange}
+                                required={form.delivery === "pickup"}
+                                className="w-full border p-2 rounded-lg"
+                            >
+                                <option value="">-- Pilih Cabang --</option>
+                                {branches.map((b, idx) => (
+                                    <option key={idx} value={b}>
+                                        {b}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     )}
 
                     <div>
