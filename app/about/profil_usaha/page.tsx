@@ -8,10 +8,10 @@ const ProfilUsahaPage = () => {
     const [selectedTitle, setSelectedTitle] = useState<string | null>(null);
 
     const images = [
-        { src: "image1.jpg", title: "Tim Building - 14 Agustus 2025" },
-        { src: "image2.jpg", title: "Initerview" },
-        { src: "image3.jpg", title: "Tim Building - 14 Agustus 2025" },
-        { src: "image4.jpg", title: "Outlet" },
+        { src: "1.JPG", title: "Tim Building - 14 Agustus 2025" },
+        { src: "7.JPG", title: "Initerview" },
+        { src: "3.JPG", title: "Tim Building - 14 Agustus 2025" },
+        { src: "5.JPG", title: "Outlet" },
     ];
 
     return (
@@ -45,11 +45,11 @@ const ProfilUsahaPage = () => {
                         </div>
                         <div>
                             <h3 className="text-xl font-semibold mb-2">Misi</h3>
-                            <ul className="list-disc pl-5 space-y-2">
-                                <li> <strong>Human Resource:</strong> Membangun tim yang solid, inovatif, dan cekatan.</li>
-                                <li> <strong>Operational:</strong> Membangun sistem operasional yang efisien, praktis dan tersentralisasi.</li>
-                                <li> <strong>Marketing:</strong> Memberikan pelayanan yang terbaik untuk konsumen, karyawan & lingkungan.</li>
-                                <li> <strong>Finance:</strong> Menjaga nilai - nilai yang selalu bertumbuh untuk tercapainya tujuan bersama</li>
+                            <ul className="list-disc pl-5 space-y-2 text-justify">
+                                <li> Membangun tim yang solid, inovatif, dan cekatan.</li>
+                                <li> Membangun sistem operasional yang efisien, praktis dan tersentralisasi.</li>
+                                <li> Memberikan pelayanan yang terbaik untuk konsumen, karyawan & lingkungan.</li>
+                                <li> Menjaga nilai - nilai yang selalu bertumbuh untuk tercapainya tujuan bersama</li>
                             </ul>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ const ProfilUsahaPage = () => {
 
                 {/* Galeri */}
                 <section>
-                    <h2 className="text-2xl font-bold mb-4 text-amber-800">Galeri</h2>
+                    <h2 className="text-2xl font-bold mb-4 text-amber-800">Galeri Customer</h2>
                     <p className="mb-6 text-gray-700 leading-relaxed">
                         Setiap momen bersama <strong>Tursina Kebab</strong> adalah cerita. Yuk, intip galeri kami
                         yang penuh kehangatan, mulai dari dapur hingga senyum pelanggan yang menikmati kebab favoritnya.
@@ -111,13 +111,13 @@ const ProfilUsahaPage = () => {
                                 key={i}
                                 className="group cursor-pointer"
                                 onClick={() => {
-                                    setSelectedImg(`/images/documentation/${img.src}`);
+                                    setSelectedImg(`/images/gallery/${img.src}`);
                                     setSelectedTitle(img.title);
                                 }}
                             >
                                 <div className="aspect-[4/5] overflow-hidden rounded-lg shadow-md">
                                     <Image
-                                        src={`/images/documentation/${img.src}`}
+                                        src={`/images/gallery/${img.src}`}
                                         alt={img.title}
                                         className="object-cover w-full h-full transform transition duration-500 group-hover:scale-110 group-hover:brightness-110"
                                         width={800}
