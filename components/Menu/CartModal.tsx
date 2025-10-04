@@ -208,7 +208,7 @@ Total: ${formatRupiah(total)}
                                     onChange={handleChange}
                                     required={form.delivery === "pickup"}
                                     className="w-full border p-2 rounded-lg"
-                                    placeholder="Masukkan waktu pengambilan (misal: Jam 19.00)"
+                                    placeholder="(misal: 19.00)"
                                 />
                             </div>
                             <div>
