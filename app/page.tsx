@@ -7,6 +7,7 @@ import Link from "next/link";
 import Gallery from "@/components/Gallery/page";
 import CallToAction from "@/components/CallToAction/page";
 import MenuCard from "@/components/Menu/MenuCard";
+import Review from "@/components/Review/page";
 
 const menuItems = [
   {
@@ -95,6 +96,7 @@ export default function Home() {
       </section>
       <CallToAction />
       <Gallery />
+      <Review />
     </div>
   );
 }
