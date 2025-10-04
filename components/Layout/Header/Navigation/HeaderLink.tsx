@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { HeaderItem } from "../../../../types/menu";
 import { usePathname } from "next/navigation";
@@ -8,6 +8,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const path = usePathname();
   const [isActive, setIsActive] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null); // ref untuk deteksi klik luar
 
   useEffect(() => {
     const isLinkActive =
@@ -15,6 +16,25 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       (item.submenu?.some((subItem) => path === subItem.href) ?? false);
     setIsActive(isLinkActive);
   }, [path, item.href, item.submenu]);
+
+  // Detect klik di luar submenu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setSubmenuOpen(false);
+      }
+    };
+
+    if (submenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [submenuOpen]);
 
   const toggleSubmenu = (e: React.MouseEvent) => {
     if (item.submenu) {
@@ -24,7 +44,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative" ref={menuRef}>
       <Link
         href={item.href}
         onClick={toggleSubmenu}
@@ -69,7 +89,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
               <Link
                 key={index}
                 href={subItem.href}
-                onClick={() => setSubmenuOpen(false)} // submenu nutup setelah klik
+                onClick={() => setSubmenuOpen(false)}
                 className={`block px-4 py-2 rounded-md ${
                   isSubItemActive
                     ? "bg-primary text-gray-900"

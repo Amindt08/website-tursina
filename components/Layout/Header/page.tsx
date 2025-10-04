@@ -63,7 +63,7 @@ const Header: React.FC = () => {
         <header className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white font-poppins ${sticky ? " shadow-lg py-3" : "shadow-lg py-2"
             }`}
         >
-            <div className='lg:py-0 py-2'>
+            <div className='relative'>
                 <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md flex items-center justify-between px-2 md:px-4">
                     <Logo />
                     <nav className="hidden text-black lg:flex flex-grow items-end gap-8 justify-end mr-16">
