@@ -22,6 +22,16 @@ const reviewVideos = [
         title: "Customer Review 4",
         description: "Will definitely come back for more!",
     },
+    {
+        src: "https://www.instagram.com/reel/DPOAmjnD_X-/",
+        title: "Customer Review 5",
+        description: "Highly recommend to everyone!",
+    },
+    {
+        src: "https://www.instagram.com/reel/DO0O7LMD_at/",
+        title: "Customer Review 6",
+        description: "A must-try for kebab lovers!",
+    },
 ];
 
 const Review = () => {
@@ -48,20 +58,21 @@ const Review = () => {
                 </div>
 
                 {/* Grid Video */}
-                    <div className="my-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div className="px-2 md:px-6 lg:px-12">
+                    <div className="my-6 mx-0 md:mx-0 lg:mx-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                         {reviewVideos.map((video, index) => (
                             <blockquote
                                 key={index}
                                 className="instagram-media rounded-3xl overflow-hidden"
                                 data-instgrm-permalink={video.src}
-                                data-instgrm-version="14"
                             >
                                 <p>{video.description}</p>
                             </blockquote>
                         ))}
                     </div>
                 </div>
-        </section>
+            </div>
+        </section >
     );
 };
 
