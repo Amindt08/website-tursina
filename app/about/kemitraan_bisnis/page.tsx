@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const kemitraanBisnisPage = () => {
     const whatsappLink =
-        "https://wa.me/6281234567890?text=Halo%20saya%20ingin%20info%20lebih%20lanjut%20tentang%20proposal%20kemitraan";
+        "https://wa.me/6281998410017?text=Halo%20saya%20ingin%20info%20lebih%20lanjut%20tentang%20proposal%20kemitraan";
 
     return (
         <div className="max-w-3xl mx-auto px-4 py-8 mt-10 pt-20">
