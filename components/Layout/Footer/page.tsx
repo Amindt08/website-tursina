@@ -47,8 +47,8 @@ const Footer = () => {
                     <div className="flex gap-4 justify-center md:justify-start">
                         {[
                             { icon: "ri-instagram-fill", link: "https://www.instagram.com/tursinakebab?igsh=dzRtaW1leDg0MXpt" },
-                            { icon: "ri-facebook-fill", link: "#" },
-                            { icon: "ri-tiktok-fill", link: "#" },
+                            { icon: "ri-facebook-fill", link: "https://www.facebook.com/tursinakebab/" },
+                            { icon: "ri-tiktok-fill", link: "https://www.tiktok.com/@tursinakebab" },
                         ].map((item, index) => (
                             <a
                                 key={index}
