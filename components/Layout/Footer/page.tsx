@@ -46,7 +46,7 @@ const Footer = () => {
                     <h2 className="text-xl md:text-2xl font-semibold mb-4">Ikuti Kami</h2>
                     <div className="flex gap-4 justify-center md:justify-start">
                         {[
-                            { icon: "ri-instagram-fill", link: "#" },
+                            { icon: "ri-instagram-fill", link: "https://www.instagram.com/tursinakebab?igsh=dzRtaW1leDg0MXpt" },
                             { icon: "ri-facebook-fill", link: "#" },
                             { icon: "ri-tiktok-fill", link: "#" },
                         ].map((item, index) => (
