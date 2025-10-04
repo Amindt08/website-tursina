@@ -13,7 +13,7 @@ const WhatsAppButton = () => {
             rel="noopener noreferrer"
             className="fixed z-50 bottom-3 right-5 text-green-500 bg-white rounded-full transition-all duration-300"
         >
-            <i className="ri-whatsapp-fill text-4xl md:text-5xl lg:text-7xl"></i>
+            <i className="ri-whatsapp-fill text-6xl md:text-6xl lg:text-7xl"></i>
         </a>
     );
 };

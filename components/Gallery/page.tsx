@@ -34,7 +34,7 @@ const Gallery = () => {
         <section className='bg-orange-100 py-2 md:py-6'>
             <div className='container  mx-auto lg:max-w-screen-xl md:max-w-screen-md' id='gallery-section'>
                 <div className="text-center">
-                    <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase'>Our Gallery</p>
+                    <p className='text-black text-lg font-normal mb-3 tracking-widest uppercase'>Our Gallery</p>
                     <h2 className="text-3xl lg:text-5xl font-semibold text-black">
                         Gallery of our cooked food.
                     </h2>
