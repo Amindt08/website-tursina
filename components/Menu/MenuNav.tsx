@@ -4,7 +4,7 @@ type MenuNavProps = {
 };
 
 const MenuNav = ({ activeCategory, setActiveCategory }: MenuNavProps) => {
-    const categories = ["Semua", "Kebab", "Burger", "Maryam", "Minuman", "Topping", "Unggulan"];
+    const categories = ["Semua", "Paket Bundling", "Unggulan", "Kebab", "Burger", "Maryam", "Minuman", "Topping"];
 
     return (
         <div className="flex justify-center bg-white shadow-md rounded-lg mx-4 mt-6">

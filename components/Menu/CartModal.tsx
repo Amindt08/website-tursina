@@ -25,9 +25,16 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
     });
 
     const branches = [
-        "Cabang Kota Madiun",
-        "Cabang Caruban",
-        "Cabang Ponorogo",
+        "Outlet Trunojoyo, Kota Madiun",
+        "Outlet Mastrip, Kota Madiun",
+        "Outlet Winongo, Kota Madiun",
+        "Outlet Jiwan, Kabupaten Madiun",
+        "Outlet Taman Praja, Kota Madiun",
+        "Outlet Caruban, Kabupaten Madiun",
+        "Outlet Gorang - Gareng Jl. Bhayangkara, Kabupaten Magetan",
+        "Outlet Maospati, Kabupaten Magetan",
+        "Outlet Ngawi Jl. Trunojoyo Kabupaten Ngawi",
+        "Outlet Ponorogo, Kabupaten Ponorogo"
     ];
 
     if (!isOpen) return null;
@@ -110,7 +117,6 @@ Total: ${formatRupiah(total)}
                         />
                     </div>
 
-
                     {cart.length === 0 ? (
                         <p className="text-gray-500 text-center mb-6">
                             Belum ada pesanan
@@ -183,6 +189,9 @@ Total: ${formatRupiah(total)}
                                 className="w-full border p-2 rounded-lg"
                                 placeholder="Masukkan alamat lengkap untuk pengantaran"
                             />
+                            <p className="mt-1 text-sm text-gray-500">
+                                <i className="ri-truck-line text-blue-700 text-2xl"></i> Gratis ongkir untuk minimal pembelian Rp50.000 (khusus area Kota Madiun)
+                            </p>
                         </div>
                     )}
 
