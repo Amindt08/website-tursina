@@ -5,7 +5,6 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,16 +18,17 @@
   --font-poppins: "Poppins", sans-serif;
 }
 
+/* Hapus efek dark mode hanya untuk teks */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Tetap gunakan teks hitam di mode gelap */
+    --foreground: #171717;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: #171717; /* pastikan teks selalu hitam */
   font-family: var(--font-poppins);
 }
-
