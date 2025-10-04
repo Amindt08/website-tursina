@@ -19,9 +19,10 @@ export default function CartModal({ cart, isOpen, onClose }: CartModalProps) {
         name: "",
         phone: "",
         note: "",
-        delivery: "pickup", // default Ambil di Tempat
+        delivery: "pickup", 
         address: "",
-        branch: "", // cabang
+        time: "",
+        branch: "", 
     });
 
     const branches = [
@@ -65,6 +66,7 @@ ${form.delivery === "pickup" ? `Cabang: ${form.branch}` : ""}
 ${form.delivery === "delivery" ? `Alamat: ${form.address}` : ""}
 Pesanan:
 ${menuList}
+Jam Pengambilan: ${form.time}
 Catatan: ${form.note}
 
 Total: ${formatRupiah(total)}
@@ -77,7 +79,7 @@ Total: ${formatRupiah(total)}
     };
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className="text-black fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-white w-full max-w-lg p-6 rounded-2xl shadow-lg overflow-y-auto max-h-[90vh] relative">
                 <button
                     onClick={onClose}
@@ -105,7 +107,7 @@ Total: ${formatRupiah(total)}
                     </div>
 
                     <div>
-                        <label className="block mb-1 font-bold">Nomor HP</label>
+                        <label className="block mb-1 font-bold">Nomor WhatsApp Aktif</label>
                         <input
                             type="tel"
                             name="phone"
@@ -198,21 +200,34 @@ Total: ${formatRupiah(total)}
                     {/* Jika pilih Ambil di Tempat */}
                     {form.delivery === "pickup" && (
                         <div>
-                            <label className="block mb-1 font-bold">Pilih Cabang</label>
-                            <select
-                                name="branch"
-                                value={form.branch}
-                                onChange={handleChange}
-                                required={form.delivery === "pickup"}
-                                className="w-full border p-2 rounded-lg"
-                            >
-                                <option value="">-- Pilih Cabang --</option>
-                                {branches.map((b, idx) => (
-                                    <option key={idx} value={b}>
-                                        {b}
-                                    </option>
-                                ))}
-                            </select>
+                            <div>
+                                <label className="block mb-1 font-bold">Waktu pengambilan</label>
+                                <input
+                                    name="time"
+                                    value={form.time}
+                                    onChange={handleChange}
+                                    required={form.delivery === "pickup"}
+                                    className="w-full border p-2 rounded-lg"
+                                    placeholder="Masukkan waktu pengambilan (misal: Jam 19.00)"
+                                />
+                            </div>
+                            <div>
+                                <label className="block mb-1 font-bold">Pilih Cabang</label>
+                                <select
+                                    name="branch"
+                                    value={form.branch}
+                                    onChange={handleChange}
+                                    required={form.delivery === "pickup"}
+                                    className="w-full border p-2 rounded-lg"
+                                >
+                                    <option value="">-- Pilih Cabang --</option>
+                                    {branches.map((b, idx) => (
+                                        <option key={idx} value={b}>
+                                            {b}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                     )}
 
