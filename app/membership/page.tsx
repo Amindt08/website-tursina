@@ -108,7 +108,7 @@ export default function MembershipPage() {
                         />
                     </div>
 
-                    <div>
+                    <div className="relative z-[9999]">
                         <label className="block mb-1 font-medium text-gray-700">
                             Lokasi Outlet
                         </label>
@@ -117,7 +117,7 @@ export default function MembershipPage() {
                             value={form.address}
                             onChange={handleChange}
                             required
-                            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition"
+                            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none appearance-auto transition"
                         >
                             <option value="">-- Pilih Lokasi Outlet --</option>
                             {outlets.map((outlet, idx) => (
