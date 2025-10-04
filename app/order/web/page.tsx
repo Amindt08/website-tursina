@@ -28,7 +28,7 @@ const stepsWebsite = [
         step: 4,
         title: "Isi Data Pemesan",
         description:
-            "Masukkan nama lengkap dan nomor HP pada form yang tersedia untuk melanjutkan pesanan.",
+            "Masukkan nama lengkap dan nomor HP dan pilih metode pengiriman pada form yang tersedia untuk melanjutkan pesanan.",
         image: "/images/tutorial/fill-data.png",
     },
     {
@@ -45,14 +45,14 @@ const OrderTutorialPage = () => {
     return (
         <section className="bg-slate-50 min-h-screen">
             <div className="relative w-full h-56 md:h-72">
-                <div className="absolute inset-0 bg-orange-500 pt-14 flex flex-col items-center justify-center">
-                    <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow">
+                <div className="absolute inset-0 bg-orange-500 mt-20 py-20 flex flex-col items-center justify-center">
+                    <h1 className="text-2xl md:text-5xl font-bold text-white drop-shadow mx-4">
                         Tutorial Order Tursina Kebab
                     </h1>
 
                     <Link
                         href="/order"
-                        className="mt-4 px-4 py-2 bg-orange-600 text-white rounded-full font-medium hover:bg-orange-700 transition"
+                        className="text-sm mt-4 px-4 py-2 bg-orange-600 text-white rounded-full font-medium hover:bg-orange-700 transition"
                     >
                         ← Kembali ke Halaman Order
                     </Link>
@@ -80,7 +80,7 @@ const OrderTutorialPage = () => {
                                 />
                             </div>
                             <div className="w-full md:w-1/2">
-                                <h3 className="text-xl font-semibold text-orange-700">
+                                <h3 className="text-sm md:text-xl font-semibold text-orange-700">
                                     Step {step.step}: {step.title}
                                 </h3>
                                 <p className="text-gray-600 mt-2">{step.description}</p>
