@@ -14,9 +14,9 @@ const CareerPage = () => {
 
     const teamDocs = [
         "/images/documentation/image1.jpg",
-        "/images/documentation/image2.jpg",
+        "/images/documentation/image2.JPG",
         "/images/documentation/image3.jpg",
-        "/images/documentation/image4.jpg",
+        "/images/documentation/image4.JPG",
     ];
 
     return (
