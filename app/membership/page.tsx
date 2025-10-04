@@ -108,7 +108,7 @@ export default function MembershipPage() {
                         />
                     </div>
 
-                    <div className="relative z-[9999]">
+                    <div>
                         <label className="block mb-1 font-medium text-gray-700">
                             Lokasi Outlet
                         </label>
