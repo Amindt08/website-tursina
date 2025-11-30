@@ -8,62 +8,100 @@ import Gallery from "@/components/Gallery/page";
 import CallToAction from "@/components/CallToAction/page";
 import MenuCard from "@/components/Menu/MenuCard";
 import Review from "@/components/Review/page";
+import { useEffect, useState } from "react";
+import { api_endpoints, image_url } from "./api/api";
+import axios from "axios";
 
-const menuItems = [
-  {
-    title: "Beef Full Kebab",
-    price: 18000,
-    image: "/images/menu/5.jpg",
-    description: "Kebab besar dengan daging sapi pilihan dan sayuran segar."
-  },
-  {
-    title: "Cheese Kebab",
-    price: 22000,
-    image: "/images/menu/2.jpg",
-    description: "Kebab lezat dengan tambahan keju meleleh."
-  },
-  {
-    title: "Black Kebab",
-    price: 18000,
-    image: "/images/menu/6.jpg",
-  },
-  {
-    title: "Spicy Kebab",
-    price: 20000,
-    image: "/images/menu/4.jpg",
-  },
-];
+interface MenuItem {
+  id: number;
+  menu_name: string;
+  image: string;
+  details: string;
+  price: number;
+  category: string;
+  status: string;
+}
+
+interface PromoItem {
+  id: number;
+  promo_name: string;
+  image: string;
+  status: string;
+}
 
 export default function Home() {
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [promoItems, setPromoItems] = useState<PromoItem[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    axios.get(api_endpoints.GETPROMO)
+      .then(response => {
+        const filtered = response.data.data.filter((item: PromoItem) =>
+          item.status?.toLowerCase() === 'active')
+        setPromoItems(filtered);
+      })
+      .catch(error => {
+        console.error("Error fetching promo items:", error);
+      });
+  })
+
+  useEffect(() => {
+    axios.get(api_endpoints.GETMENU)
+      .then(response => {
+        const filtered = response.data.data.filter((item: MenuItem) =>
+          item.category?.toLowerCase() === "unggulan" &&
+          item.status?.toLowerCase() === 'active'
+        );
+        setMenuItems(filtered);
+      })
+      .catch(error => {
+        console.error("Error fetching menu items:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Memuat menu...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-slate-100 min-h-screen">
       <section id="home-section" className="flex items-center justify-center">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          // navigation
-          // pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}
           loop
           className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[700px] pt-10 mt-20"
         >
-          <SwiperSlide>
-            <Image
-              src="/images/promo/banner1.jpg"
-              alt="Banner 1"
-              className="w-full h-full object-cover"
-              width={800}
-              height={400}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              src="/images/promo/banner2.jpg"
-              alt="Banner 1"
-              className="w-full h-full object-cover"
-              width={800}
-              height={400}
-            />
-          </SwiperSlide>
+          {promoItems.length > 0 ? (
+            promoItems.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Image
+                  src={`${image_url}/promo/${item.image}`}   // tanpa slash ganda
+                  alt={item.promo_name}
+                  className="w-full h-full object-cover"
+                  width={600}
+                  height={200}
+                />
+              </SwiperSlide>
+            ))
+          ) : (
+            <SwiperSlide>
+              <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                <span className="text-gray-500">Tidak ada promo tersedia</span>
+              </div>
+            </SwiperSlide>
+          )}
         </Swiper>
       </section>
       <section id="menu-fav" className="py-10">
@@ -73,16 +111,15 @@ export default function Home() {
           Nikmati hidangan terbaik kami yang dibuat dengan cinta dan bahan segar.
         </p>
 
-        {/* Grid Card */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 ">
           {menuItems.map((item, index) => (
             <MenuCard
               key={index}
-              title={item.title}
+              title={item.menu_name}
               price={item.price}
-              image={item.image}
+              image={`${image_url}/menu/${item.image}`}
               showButton={false}
-              description={item.description}
+              description={item.details}
             />
           ))}
         </div>

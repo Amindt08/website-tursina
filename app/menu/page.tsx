@@ -1,10 +1,11 @@
 "use client";
 import MenuCard from "@/components/Menu/MenuCard";
 import MenuNav from "@/components/Menu/MenuNav";
-import React, { useState } from "react";
-import { menuItems } from "@/data/menuItems";
+import React, { useEffect, useState } from "react";
 import CartButton from "@/components/Menu/CartButton";
 import CartModal from "@/components/Menu/CartModal";
+import { api_endpoints, image_url } from "../api/api";
+import axios from "axios";
 
 type CartItem = {
     title: string;
@@ -13,11 +14,21 @@ type CartItem = {
     qty: number;
 };
 
+interface MenuItem {
+    id: number;
+    menu_name: string;
+    image: string;
+    details: string;
+    price: number;
+    category: string;
+    status: string;
+}
+
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState("Semua");
     const [cart, setCart] = useState<CartItem[]>([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
-
+    const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const filteredMenu =
         activeCategory === "Semua"
             ? menuItems
@@ -35,6 +46,18 @@ const Menu = () => {
         });
     };
 
+    useEffect(() => {
+        axios.get(api_endpoints.GETMENU)
+        .then(response => {
+            console.log("API RESPONSE:", response.data);
+            const filtered = response.data.data.filter((item: MenuItem) => 
+            item.status?.toLowerCase() === "active")
+            setMenuItems(filtered);
+        })
+        .catch(error => {
+            console.error("Error fetching menu items:", error);
+        });
+    },[])
     return (
         <section className="bg-slate-100 min-h-screen">
             <div className="bg-orange-500 text-white text-center py-20 pt-32">
@@ -55,17 +78,17 @@ const Menu = () => {
                         {filteredMenu.map((item, index) => (
                             <MenuCard
                                 key={index}
-                                title={item.title}
+                                title={item.menu_name}
                                 price={item.price}
-                                image={item.image}
+                                image={`${image_url}/menu/${item.image}`}
                                 onAdd={() =>
                                     addToCart({
-                                        title: item.title,
+                                        title: item.menu_name,
                                         price: item.price,
                                         image: item.image,
                                     })
                                 }
-                                description={item.description}
+                                description={item.details}
                             />
                         ))}
                     </div>
