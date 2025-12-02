@@ -1,18 +1,34 @@
 "use client"
+import { api_endpoints, image_url } from "@/app/api/api";
+import axios from "axios";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
+interface GaleriItem {
+    id: number;
+    category: string;
+    image: string;
+    description: string;
+}
 
 const ProfilUsahaPage = () => {
     const [selectedImg, setSelectedImg] = useState<string | null>(null);
     const [selectedTitle, setSelectedTitle] = useState<string | null>(null);
+    const [galeriItems, setGaleriItems] = useState<GaleriItem[]>([]);
 
-    const images = [
-        { src: "1.JPG", title: "Tim Building - 14 Agustus 2025" },
-        { src: "7.JPG", title: "Initerview" },
-        { src: "3.JPG", title: "Tim Building - 14 Agustus 2025" },
-        { src: "5.JPG", title: "Outlet" },
-    ];
+    useEffect(() => {
+        axios.get(api_endpoints.GETGALERI)
+            .then(response => {
+                const filtered = response.data.data.filter((item: GaleriItem) =>
+                    item.category?.toLowerCase() === "galeri customer"
+                );
+                setGaleriItems(filtered);
+            })
+            .catch(error => {
+                console.error("Error fetching gallery items:", error);
+            });
+    }, []);
+
 
     return (
         <div className="bg-gray-50 min-h-screen text-gray-800 ">
@@ -106,19 +122,19 @@ const ProfilUsahaPage = () => {
 
                     {/* Grid gallery */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {images.map((img, i) => (
+                        {galeriItems.map((item, index) => (
                             <div
-                                key={i}
+                                key={index}
                                 className="group cursor-pointer"
                                 onClick={() => {
-                                    setSelectedImg(`/images/gallery/${img.src}`);
-                                    setSelectedTitle(img.title);
+                                    setSelectedImg(`${image_url}/gallery/${item.image}`);
+                                    setSelectedTitle(item.description);
                                 }}
                             >
                                 <div className="aspect-[4/5] overflow-hidden rounded-lg shadow-md">
                                     <Image
-                                        src={`/images/gallery/${img.src}`}
-                                        alt={img.title}
+                                        src={`${image_url}/gallery/${item.image}`}
+                                        alt={item.description}
                                         className="object-cover w-full h-full transform transition duration-500 group-hover:scale-110 group-hover:brightness-110"
                                         width={800}
                                         height={1000}
@@ -148,7 +164,6 @@ const ProfilUsahaPage = () => {
                                 {selectedTitle && (
                                     <p className="mt-4 text-lg text-white font-semibold">{selectedTitle}</p>
                                 )}
-                                {/* Tombol close */}
                                 <button
                                     className="absolute top-2 right-2 bg-white/80 rounded-full p-2 hover:bg-white"
                                     onClick={(e) => {

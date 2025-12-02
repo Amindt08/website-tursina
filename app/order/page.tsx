@@ -7,25 +7,25 @@ const platforms = [
         name: "Website Tursina",
         description: "Pesan langsung melalui website resmi Tursina Kebab.",
         image: "/images/logo.png",
-        link: "order/web",
+        link: "/order/web",
     },
     {
         name: "GoFood",
         description: "Nikmati Tursina Kebab lewat aplikasi GoFood.",
         image: "/images/platform/logo-gofood-baru.png",
-        link: "order/gofood", 
+        link: "/order/gofood", 
     },
     {
         name: "ShopeeFood",
         description: "Pesan dengan mudah lewat ShopeeFood.",
         image: "/images/platform/logo-shopeefood.png",
-        link: "order/shopeefood",
+        link: "/order/shopeefood",
     },
     {
         name: "GrabFood",
         description: "Order cepat via GrabFood.",
         image: "/images/platform/logo-grabfood.jpg",
-        link: "order/grabfood", 
+        link: "/order/grabfood", 
     },
 ];
 

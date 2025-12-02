@@ -1,23 +1,49 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Briefcase, Camera } from "react-feather";
+import { api_endpoints, image_url } from "@/app/api/api";
+import axios from "axios";
+
+interface GaleriItem {
+    id: number;
+    category: string;
+    image: string;
+    description: string;
+}
+
+interface CareerItem {
+    id: number;
+    image: string;
+    description: string;
+}
 
 const CareerPage = () => {
-    const images = [
-        "/images/career/1.jpg",
-        "/images/career/2.jpg",
-        "/images/career/3.jpg",
-        "/images/career/4.jpg",
-        "/images/career/5.jpg"
-    ];
+    const [galeriItems, setGaleriItems] = useState<GaleriItem[]>([]);
+    const [careerItems, setCareerItems] = useState<CareerItem[]>([]);
 
-    const teamDocs = [
-        "/images/documentation/image1.jpg",
-        "/images/documentation/image2.JPG",
-        "/images/documentation/image3.jpg",
-        "/images/documentation/image4.JPG",
-    ];
+    useEffect(() => {
+        axios.get(api_endpoints.GETGALERI)
+            .then(response => {
+                const filtered = response.data.data.filter((item: GaleriItem) =>
+                    item.category?.toLowerCase() === "galeri tim"
+                );
+                setGaleriItems(filtered);
+            })
+            .catch(error => {
+                console.error("Error fetching gallery items:", error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axios.get(api_endpoints.GETKARIR)
+            .then(response => {
+                setCareerItems(response.data.data);
+            })
+            .catch(error => {
+                console.error("Error fetching career items:", error);
+            })
+    });
 
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-6 md:px-16 mt-10 pt-20">
@@ -38,14 +64,14 @@ const CareerPage = () => {
 
             {/* Pamflet Lowongan */}
             <div className="max-w-5xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {images.map((src, i) => (
+                {careerItems.map((item, index) => (
                     <div
-                        key={i}
+                        key={index}
                         className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition"
                     >
                         <Image
-                            src={src}
-                            alt={`Pamflet Lowongan ${i + 1}`}
+                            src={`${image_url}/karir/${item.image}`}
+                            alt={item.description}
                             width={1000}
                             height={1400}
                             className="w-full object-cover rounded-lg"
@@ -69,14 +95,14 @@ const CareerPage = () => {
                 </div>
 
                 <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                    {teamDocs.map((src, i) => (
+                    {galeriItems.map((item, index) => (
                         <div
-                            key={i}
+                            key={index}
                             className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition"
                         >
                             <Image
-                                src={src}
-                                alt={`Dokumentasi Tim ${i + 1}`}
+                                src={`${image_url}/gallery/${item.image}`}
+                                alt={item.description}
                                 width={800}
                                 height={600}
                                 className="w-full h-60 object-cover"

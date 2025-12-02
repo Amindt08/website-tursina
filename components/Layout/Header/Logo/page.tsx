@@ -8,10 +8,8 @@ const Logo: React.FC = () => {
             <Image
                 src="/images/logo.png"
                 alt="logo"
-                width={50}
-                height={50}
-                style={{ width: "auto", height: "auto" }}
-                quality={100}
+                width={65}
+                height={65}
                 className='md:ml-16'
             />
         </Link>

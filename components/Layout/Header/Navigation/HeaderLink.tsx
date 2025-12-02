@@ -8,37 +8,54 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const path = usePathname();
   const [isActive, setIsActive] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null); // ref untuk deteksi klik luar
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const normalizePath = (url: string) => url.replace(/\/$/, "");
 
   useEffect(() => {
+    const currentPath = normalizePath(path);
+    const itemPath = normalizePath(item.href);
+
     const isLinkActive =
-      path === item.href ||
-      (item.submenu?.some((subItem) => path === subItem.href) ?? false);
+      currentPath === itemPath ||
+      (item.submenu?.some(
+        (subItem) => normalizePath(subItem.href) === currentPath
+      ) ?? false) ||
+      currentPath.startsWith(itemPath + "/");
+
     setIsActive(isLinkActive);
   }, [path, item.href, item.submenu]);
 
-  // Detect klik di luar submenu
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setSubmenuOpen(false);
-      }
+    const normalizePath = (url: string) => {
+      if (!url) return "/";
+      return url === "/" ? "/" : url.replace(/\/$/, "");
     };
 
-    if (submenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+    const currentPath = normalizePath(path);
+    const itemPath = normalizePath(item.href);
+
+    let isLinkActive = false;
+
+    if (itemPath === "/") {
+      isLinkActive = currentPath === "/";
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      isLinkActive =
+        currentPath === itemPath ||
+        currentPath.startsWith(itemPath + "/") ||
+        (item.submenu?.some(
+          (sub) => normalizePath(sub.href) === currentPath
+        ) ?? false);
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [submenuOpen]);
+    setIsActive(isLinkActive);
+  }, [path, item.href, item.submenu]);
+
+
 
   const toggleSubmenu = (e: React.MouseEvent) => {
     if (item.submenu) {
-      e.preventDefault(); // supaya tidak langsung redirect
+      e.preventDefault();
       setSubmenuOpen((prev) => !prev);
     }
   };
@@ -48,22 +65,22 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       <Link
         href={item.href}
         onClick={toggleSubmenu}
-        className={`text-lg flex items-center hover:text-orange-600 capitalize relative ${
-          isActive
-            ? "text-orange-600 after:absolute after:w-8 after:h-1 after:bg-primary after:rounded-full after:-bottom-1 font-semibold"
-            : "text-gray-900"
-        }`}
+        className={`text-lg flex items-center capitalize relative transition-colors duration-200
+          ${isActive
+            ? "text-orange-600 font-semibold after:absolute after:w-8 after:h-1 after:bg-primary after:rounded-full after:-bottom-1"
+            : "text-gray-900 hover:text-orange-600"
+          }`}
       >
         {item.label}
+
         {item.submenu && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.5em"
             height="1.5em"
             viewBox="0 0 24 24"
-            className={`ml-1 transition-transform ${
-              submenuOpen ? "rotate-180" : ""
-            }`}
+            className={`ml-1 transition-transform ${submenuOpen ? "rotate-180" : ""
+              }`}
           >
             <path
               fill="none"
@@ -84,17 +101,18 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
           data-aos-duration="500"
         >
           {item.submenu?.map((subItem, index) => {
-            const isSubItemActive = path === subItem.href;
+            const isSubItemActive = normalizePath(path) === normalizePath(subItem.href);
+
             return (
               <Link
                 key={index}
                 href={subItem.href}
                 onClick={() => setSubmenuOpen(false)}
-                className={`block px-4 py-2 rounded-md ${
-                  isSubItemActive
-                    ? "bg-primary text-gray-900"
+                className={`block px-4 py-2 rounded-md transition-colors duration-150
+                  ${isSubItemActive
+                    ? "bg-primary text-gray-900 font-medium"
                     : "text-gray-900 hover:bg-primary hover:text-orange-600"
-                }`}
+                  }`}
               >
                 {subItem.label}
               </Link>
