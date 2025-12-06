@@ -1,5 +1,7 @@
-export const api_url = `http://127.0.0.1:8000/api`;
-export const image_url = `http://127.0.0.1:8000/images`;
+// export const api_url = `http://127.0.0.1:8000/api`;
+// export const image_url = `http://127.0.0.1:8000/images`;
+export const api_url = `https://tursinakebab.id/api`;
+export const image_url = `https://tursinakebab.id/images`;
 
 export const api_endpoints = {
     GETMENU: `${api_url}/menu`,
